@@ -5,4 +5,4 @@ class RegistroSerializer(ModelSerializer):
     class Meta: 
         model = Registro
         #fields = "__all__"
-        fields = ['nombre','categoria','cantidad','fecha_ingreso']
+        fields = ['id','nombre','categoria','cantidad','fecha_ingreso']

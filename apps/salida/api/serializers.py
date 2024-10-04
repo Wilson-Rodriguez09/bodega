@@ -5,4 +5,4 @@ class SalidaSerializer(ModelSerializer):
     class Meta: 
         model = Salida
         #fields = "__all__"
-        fields = ['nombre','categoria','cantidad','fecha_salida']
+        fields = ['id','nombre','categoria','cantidad','fecha_salida']
