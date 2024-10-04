@@ -15,28 +15,28 @@ class RegistroViewSet(ViewSet):
     
     def update(self, request, pk=int):
         try:
-            registro = Registro.objects.get(pk=pk)
-            serializer = RegistroSerializer(registro, data=request.data)
+            serializer = Registro.objects.get(pk=pk)
+            serializer = RegistroSerializer(serializer, data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(status=status.HTTP_200_OK, data=serializer.data)
-        except registro.DoesNotExist:
+        except Registro.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND, data={"Registro no encontrado. "})
     
     def partial_update(self, request, pk=int):
         try:
-            registro = Registro.objects.get(pk=pk)
-            serializer = RegistroSerializer(registro, data=request.data)
+            serializer = Registro.objects.get(pk=pk)
+            serializer = RegistroSerializer(serializer, data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(status=status.HTTP_200_OK, data=serializer.data)
-        except registro.DoesNotExist:
+        except Registro.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND, data={"Registro no encontrado. "})
         
     def destroy(self, request, pk=int):
         serializer = Registro.objects.get(pk=pk)
         serializer.delete()
-        return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK, data=serializer.data)
 
     
     

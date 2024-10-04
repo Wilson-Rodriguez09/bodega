@@ -15,8 +15,8 @@ class SalidaViewSet(ViewSet):
     
     def update(self, request, pk=int):
         try:
-            salida = Salida.objects.get(pk=pk)
-            serializer = SalidaSerializer(salida, data=request.data)
+            serializer = Salida.objects.get(pk=pk)
+            serializer = SalidaSerializer(serializer, data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(status=status.HTTP_200_OK, data=serializer.data)
@@ -25,8 +25,8 @@ class SalidaViewSet(ViewSet):
     
     def partial_update(self, request, pk=int):
         try:
-            salida = Salida.objects.get(pk=pk)
-            serializer = SalidaSerializer(salida, data=request.data)
+            serializer = Salida.objects.get(pk=pk)
+            serializer = SalidaSerializer(serializer, data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(status=status.HTTP_200_OK, data=serializer.data)
